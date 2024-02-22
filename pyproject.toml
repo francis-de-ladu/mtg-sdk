@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "scryfall"
+version = "0.1.0"
+description = ""
+authors = ["Francis de Ladurantaye <francis.de.ladurantaye@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+urllib3 = "^2.2.1"
+requests = "^2.31.0"
+loguru = "^0.7.2"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.2.0"
+isort = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
