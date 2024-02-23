@@ -3,29 +3,37 @@ from dataclasses import dataclass
 from datetime import date, datetime
 from functools import cached_property, reduce
 from operator import or_
-from typing import get_args
+from typing import Self, get_args, Optional
 from uuid import UUID
 
 from urllib3.util import Url, parse_url
 
-from ..misc.Color import Color
+from src.misc.Color import Color
 
 
 @dataclass(frozen=True, kw_only=True)
 class Base(ABC):
     @classmethod
-    def from_dict(cls, data):
+    def from_dict(cls, data: dict) -> Self:
         return cls(**data)
 
     def __post_init__(self):
         for field in self.__dataclass_fields__.values():
-            # get field type (ie. <class 'int'>, list[uuid.UUID], dict[str, float], ...)
-            if str(field.type)[:4] in ("list", "dict"):
-                field_type = get_args(field.type)[-1]
-            else:
-                field_type = field.type
+            # get field type, can be anything similar to:
+            #  - <class 'int'>
+            #  - list[uuid.UUID]
+            #  - dict[str, float]
+            #  - typing.Optional[str]
+            type_args = get_args(field.type)
 
-            # check if field needs to be cast
+            if not type_args:
+                field_type = field.type
+            elif type_args[-1] == type(None):
+                field_type = type_args[-2]
+            else:
+                field_type = type_args[-1]
+
+            # # check if field needs to be cast
             # if field_type not in self._types_to_cast:
             #    continue
 
@@ -41,7 +49,9 @@ class Base(ABC):
             if str(field.type).startswith("list"):
                 new_value = [cast(value) for value in field_value]
             elif str(field.type).startswith("dict"):
-                new_value = {key: cast(value) if value is not None else None for key, value in field_value.items()}
+                new_value = {
+                    key: cast(value) if value is not None else None for key, value in field_value.items()
+                }
             else:
                 new_value = cast(field_value)
 

@@ -3,7 +3,7 @@ from uuid import UUID
 
 from urllib3.util import Url
 
-from ..base import Base
+from src.base import Base
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -12,7 +12,8 @@ class RelatedCard(Base):
     id: UUID
     # A content type for this object, always related_card.
     object: str
-    # A field explaining what role this card plays in this relationship, one of token, meld_part, meld_result, or combo_piece.
+    # A field explaining what role this card plays in this relationship, one of token, meld_part,
+    # meld_result, or combo_piece.
     component: str
     # The name of this particular related card.
     name: str

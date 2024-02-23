@@ -1,0 +1,235 @@
+Kamahl's Druidic Vow
+Heartless Pillage
+Pirate's Pillage
+Path of Mettle
+Decimate
+Thought Monitor
+Howling Giant
+Werewolf Pack Leader
+Inspiring Call
+Teshar, Ancestor's Apostle
+Kataki, War's Wage
+Minion's Return
+Angel of Glory's Rise
+Dire Tactics
+Jirina, Dauntless General
+Filter Out
+Skirk Prospector
+Grenzo, Dungeon Warden
+Krenko, Mob Boss
+Wort, Boggart Auntie
+Zo-Zu the Punisher
+Vial Smasher the Fierce
+Krenko, Tin Street Kingspin
+Gut, True Sould Zealot
+Duke Ulder Ravengard
+Hanweir Garrison
+Kogla, the Titan Ape
+Bear Umbra
+Tireless Provisioner
+Eternal WItness
+Elemental Bond
+Beast Within
+Kenrith's Transformation
+Tamiyo's Safekeeping
+Ob Nixilis, the Hate-Twisted
+Windswift Slice
+Mirkwood Bats
+Wat of Rebirth
+Guardian Project
+Vampire Nighthawk
+Increasing Ambition
+Necrologia
+Lotus Cobra
+Bloodgift Demon
+Gwenna, Eyes of Gaea
+Elspeth Resplendent
+Ob Nixilis, the Adversary
+Alesha, Who Smiles at Death
+Burning Anger
+Treasure Cruise
+Rakdos, Lord of Riots
+Sarkhan's Unsealing
+City on Fire
+The Balrog, Durin's Bane
+Strict Proctor
+Finest Hour
+Awaken the Blood Avatar
+Coldsteel Heart
+The Thirteenth Doctor
+Four Knocks
+Winds of Abandon
+Ghazghkull, Prophet of the Waaagh!
+Oketra's Monument
+Chandra, Torch of Defiance
+Young Pyromancer
+Sulfuric Vortex
+Kytheon, Hero of Akros
+Usher of the Fallen
+Rafiq of the Many
+Valduk, Keeper of the Flame
+Endrek Sahr, Master Breeder
+Valki, God of Lies
+The Scorpion God
+Tergrid, God of Fright
+Purphoros, Bronze-Blooded
+Oketra the True
+Hazoret the Fervent
+Asmodeus the Archfiend
+Anax, Hardened in the Forge
+Fists of the Demigod
+Victim of Night
+Baleful Mastery
+Hurl Through Hell
+Dovin's Veto
+Render Silent
+Bastion of Remembrance
+Titan Hunter
+Dispel
+Thirst for Knowledge
+Ajani, the Greathearted
+Bite Down
+Gleeful Demolition
+Troll of Khazad-dûm
+Minas Tirith
+Callous Sell-Sword
+Elusive Otter
+Rowan, Scion of War
+Will, Scion of Peace
+Heartflame Duelist
+Flame of Anor
+Keldon Twilight
+Sunscape Familiar
+Nightscape Familiar
+Familiar's Ruse
+Destructive Flow
+Eladamri's Call
+Confound
+Diabolic Intent
+Hero's Downfall
+Infernal Grasp
+Terminate
+Dreadhorde Arcanist
+Blasphemouos Act
+Kellan, the Fae-Blooded
+Lich-Knights' Conquest
+Twisted Sewer-Witch
+Lord Skitter, Sewer King
+Totentanz, Swarm Piper
+Darksteel Ingot
+Deathgreeter
+Warlock Class
+Debt to the Deathless
+Vito, Thorn of the Dusk Rose
+Teysa Karlov
+Elas il-Kor, Sadistic Pilgrim
+Orah, Skyclave Hierophant
+Raphael, Fiendish Savior
+Descendants' Fury
+Aura Shards
+Torbran, Thane of Red Fell
+Damn
+Giver of Runes
+Vandalblast
+Hex
+Temple of Triumph
+Sword of the Animist
+Goblin Engineer
+Ratcatcher Trainee
+Voracious Vermin
+Grave Titan
+Monstrous Rage
+Court of Embereth
+Fiery Emancipation
+Virtue of Persistence
+Angrath, the Flame-Chained
+Berserk
+Force of Vigor
+Misleading Signpost
+Mayheim Devil
+Orcish Lumberjack
+Runaway Steam-Kin
+Relic of Legends
+Dockside Extortionist
+Korvold, Fae-Cursed King
+Ozolith, the Shattered Spire
+Sunshot Militia
+Kutzil, Malamet Exemplar
+Daultless Dismantler
+Pit of Offerings
+Roaming Throne
+Treasure Map
+Growing Rites of Itlimoc
+Contest of Claws
+Illustrious Wanderglyph
+Sovereigh Okinec Ahau
+Ancestors' Aid
+Indoraptor' the Perfect Hybrid
+Compy Swarm
+The Skullspore Nexus
+Bonehoard Dracosaur
+Baleful Strix
+Mirrodin Avenged
+Magistrate's Scepter
+Chaos Warp
+Warping Wail
+Voice of the Blessed
+Ziatora, the Incinerator
+Brave the Elements
+Tin Street Dodger
+Illusionist's Bracers
+Embercleave
+Umezawa's Jitte
+Ashnod's Altar
+Rogue's Passage
+Fabled Passage
+Prismatic Vista
+Thought Vessel
+Mind Stone
+Glistening Sphere
+Three Visits
+Dark Ritual
+Herald of Slaanesh
+Blood Speaker
+Up the Beanstalk
+Song of Totentanz
+Unruly Catapult
+Ob Nixilis, Captive Kingpin
+Urabrask's Forge
+Lagomo,Hand of Hatred
+Brotherhood's End
+Mr. Orfeo, the Boulder
+Simic Ascendancy
+Xolatoyac, the Smiling Flood
+Field of the Dead
+Demand Answers
+Thrill of Possibility
+Pick Your Poison
+Get a Leg Up
+Sokenzan, Crucible of Defiance
+Takenuma, Abandoned Mire
+Restless Vents
+Archfiend of the Dross
+Big Score
+Extract a Confession
+Tenth District Hero
+Feather, Radiant Arbiter
+Grinning Ignus
+Replicating Ring
+Goblin Pyromancer
+Long Goodbye
+No More Lies
+Springleaf Drum
+Seasoned Pyromancer
+Lae'zel, Vlaakith's Champion
+Flaming Fist
+Sword Coast Sailor
+Omnath, Locus of All
+Kaya, Spirits' Justice
+Hollowhenge Overlord
+Warleader's Call
+Pitiless Plunderer
+Universal Automaton
+Bloodline Pretender
+Massacre Girl
+Yargle, Glutton of Urborg

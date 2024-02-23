@@ -3,7 +3,7 @@ from datetime import date
 
 from urllib3.util import Url
 
-from ..base import Base
+from src.base import Base
 
 
 @dataclass(frozen=True, kw_only=True)

@@ -1,4 +1,4 @@
-from enum import Enum, auto
+from enum import Enum
 
 
 class FrameEffect(Enum):
@@ -17,6 +17,7 @@ class FrameEffect(Enum):
     WAXINGANDWANINGMOONDFC = "waxingandwaningmoondfc"  # The waxing and waning crescent moon transform marks
     SHOWCASE = "showcase"  # A custom Showcase frame
     EXTENDEDART = "extendedart"  # An extended art frame
+    FULLART = "fullart"  # a full art frame
     COMPANION = "companion"  # The cards have a companion frame
     ETCHED = "etched"  # The cards have an etched foil treatment
     SNOW = "snow"  # The cards have the snowy frame effect

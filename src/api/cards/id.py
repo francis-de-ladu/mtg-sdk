@@ -1,13 +1,11 @@
-import os
 from enum import Enum
+from typing import Optional
 from uuid import UUID
 
-import requests
 from loguru import logger
 
+from src.api import ApiClient, CardsEndpoint
 from src.cards.Card import Card
-
-CARD_ENDPOINT = "https://api.scryfall.com/cards"
 
 
 class Kind(Enum):
@@ -21,7 +19,7 @@ class Kind(Enum):
 
 class Format(Enum):
     JSON = "json"
-    CSV = "csv"
+    TEXT = "text"
     IMAGE = "image"
 
 
@@ -40,12 +38,13 @@ class Version(Enum):
 
 
 def _id(
-    card_id: UUID | int,
+    client: ApiClient,
+    card_id: UUID | str | int,
     *,
-    kind: Kind = Kind.SCRYFALL,
-    fmt: Format = Format.JSON,
-    face: Face = Face.FRONT,
-    version: Version = Version.LARGE,
+    kind: str | Kind = Kind.SCRYFALL,
+    fmt: str | Format = Format.JSON,
+    face: str | Face = Face.FRONT,
+    version: str | Version = Version.LARGE,
     pretty: bool = False,
 ) -> Card:
     kind = Kind(kind).value
@@ -55,18 +54,14 @@ def _id(
 
     if fmt != Format.IMAGE:
         if face == Face.BACK:
-            logger.warn("Requesting for `back` face only works with `image` format.")
+            logger.warning("Requesting for `back` face only works with `image` format.")
 
     params = {
-        "fmt": fmt,
+        "format": fmt,
         "face": face,
         "version": version,
         "pretty": pretty,
     }
 
-    url = os.path.join(CARD_ENDPOINT, kind.value, str(card_id))
-    resp = requests.get(url, params)
-    logger.info(f"{params}, {resp}")
-
-    card = Card.from_dict(resp.json())
+    card = client.get(CardsEndpoint.ID, Card, params, id=card_id)
     return card

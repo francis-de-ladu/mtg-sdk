@@ -1,13 +1,10 @@
-import os
 from enum import Enum
-from typing import Any
+from typing import Optional
 
-import requests
 from loguru import logger
 
+from src.api import ApiClient, CardsEndpoint
 from src.cards.Card import Card
-
-CARD_ENDPOINT = "https://api.scryfall.com/cards"
 
 
 class Format(Enum):
@@ -31,57 +28,57 @@ class Version(Enum):
 
 
 def exact(
+    client: ApiClient,
     query: str,
-    set: str = None,
+    set: Optional[str] = None,
     fmt: Format = Format.JSON,
     face: Face = Face.FRONT,
     version: Version = Version.LARGE,
     pretty: bool = False,
 ) -> Card:
     return _named(
+        client,
         {
             "exact": query,
             "set": set,
-            "fmt": fmt,
+            "format": fmt,
             "face": face,
             "version": version,
             "pretty": pretty,
-        }
+        },
     )
 
 
 def fuzzy(
+    client: ApiClient,
     query: str,
-    set: str = None,
-    fmt: Format = Format.JSON,
-    face: Face = Face.FRONT,
-    version: Version = Version.LARGE,
+    set: Optional[str] = None,
+    fmt: str | Format = Format.JSON,
+    face: str | Face = Face.FRONT,
+    version: str | Version = Version.LARGE,
     pretty: bool = False,
 ) -> Card:
     return _named(
+        client,
         {
             "fuzzy": query,
             "set": set,
-            "fmt": fmt,
+            "format": fmt,
             "face": face,
             "version": version,
             "pretty": pretty,
-        }
+        },
     )
 
 
-def _named(params: dict[str, Any]) -> Card:
-    params["fmt"] = Format(params["fmt"]).value
+def _named(client: ApiClient, params: dict) -> Card:
+    params["format"] = Format(params["format"]).value
     params["face"] = Face(params["face"]).value
     params["version"] = Version(params["version"]).value
 
-    if params["fmt"] != Format.IMAGE:
+    if params["format"] != Format.IMAGE:
         if params["face"] == Face.BACK:
-            logger.warn("Requesting for `back` face only works with `image` format.")
+            logger.warning("Requesting for `back` face only works with `image` format.")
 
-    url = os.path.join(CARD_ENDPOINT, "named")
-    resp = requests.get(url, params)
-    logger.info(f"{params}, {resp}")
-
-    card = Card.from_dict(resp.json())
+    card = client.get(CardsEndpoint.NAMED, Card, params)
     return card

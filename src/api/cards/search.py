@@ -1,12 +1,8 @@
-import os
 from enum import Enum
+from typing import Optional
 
-import requests
-from loguru import logger
-
+from src.api import ApiClient, CardsEndpoint, List
 from src.cards.Card import Card
-
-CARD_ENDPOINT = "https://api.scryfall.com/cards"
 
 
 class Unique(Enum):
@@ -37,7 +33,8 @@ class Order(Enum):
     EDHREC = "edhrec"  # Sort cards by their EDHREC ranking: lowest → highest
     PENNY = "penny"  # Sort cards by their Penny Dreadful ranking: lowest → highest
     ARTIST = "artist"  # Sort cards by their front-side artist name: A → Z
-    REVIEW = "review"  # Sort cards how podcasts review sets, usually color & CMC, lowest → highest, with Booster Fun cards at the end
+    # Sort cards how podcasts review sets, usually color & CMC, lowest → highest, with Booster Fun cards at the end
+    REVIEW = "review"
 
 
 class Direction(Enum):
@@ -52,18 +49,20 @@ class Format(Enum):
 
 
 def search(
+    client: ApiClient,
     query: str,
     *,
-    unique: Unique = Unique.CARDS,
-    order: Order = Order.NAME,
-    dir: Direction = Direction.AUTO,
-    fmt: Format = Format.JSON,
+    unique: str | Unique = Unique.CARDS,
+    order: str | Order = Order.NAME,
+    dir: str | Direction = Direction.AUTO,
+    fmt: str | Format = Format.JSON,
     include_extras: bool = False,
     include_multilingual: bool = False,
     include_variations: bool = False,
     pretty: bool = False,
     page: int = 1,
-) -> list[Card]:
+) -> List[Card]:
+
     unique = Unique(unique).value
     order = Order(order).value
     dir = Direction(dir).value
@@ -74,7 +73,7 @@ def search(
         "unique": unique,
         "order": order,
         "dir": dir,
-        "fmt": fmt,
+        "format": fmt,
         "include_extras": include_extras,
         "include_multilingual": include_multilingual,
         "include_variations": include_variations,
@@ -82,9 +81,5 @@ def search(
         "page": page,
     }
 
-    url = os.path.join(CARD_ENDPOINT, "search")
-    resp = requests.get(url, params)
-    logger.info(f"{params}, {resp}")
-
-    cards = [Card.from_dict(data) for data in resp.json()["data"]]
+    cards = client.get(CardsEndpoint.SEARCH, List[Card], params)
     return cards
