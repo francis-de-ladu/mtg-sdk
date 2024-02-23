@@ -29,7 +29,7 @@ def collection(
     identifiers: list[Identifier],
     *,
     pretty: bool = False,
-):# -> List[Card]:
+):  # -> List[Card]:
     identifiers = [Identifier(ident) for ident in identifiers]
 
     params = {

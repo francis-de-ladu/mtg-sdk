@@ -2,8 +2,6 @@ from enum import Enum
 
 from src.api import ApiClient, CardsEndpoint, Catalog
 
-from typing import Optional
-
 
 class Format(Enum):
     JSON = "json"

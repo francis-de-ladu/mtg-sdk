@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from datetime import date, datetime
 from functools import cached_property, reduce
 from operator import or_
-from typing import Self, get_args, Optional
+from typing import Self, get_args
 from uuid import UUID
 
 from urllib3.util import Url, parse_url
@@ -28,7 +28,7 @@ class Base(ABC):
 
             if not type_args:
                 field_type = field.type
-            elif type_args[-1] == type(None):
+            elif type_args[-1] is type(None):
                 field_type = type_args[-2]
             else:
                 field_type = type_args[-1]
@@ -49,9 +49,7 @@ class Base(ABC):
             if str(field.type).startswith("list"):
                 new_value = [cast(value) for value in field_value]
             elif str(field.type).startswith("dict"):
-                new_value = {
-                    key: cast(value) if value is not None else None for key, value in field_value.items()
-                }
+                new_value = {key: cast(value) if value is not None else None for key, value in field_value.items()}
             else:
                 new_value = cast(field_value)
 

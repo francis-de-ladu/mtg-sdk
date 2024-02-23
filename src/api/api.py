@@ -14,8 +14,6 @@ from typing_extensions import NotRequired, Unpack
 
 from src.base import Base
 
-# from src.cards import Card
-
 from .endpoints import CardsEndpoint, Endpoint, SetsEndpoint
 
 
