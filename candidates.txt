@@ -20,8 +20,8 @@ Krenko, Mob Boss
 Wort, Boggart Auntie
 Zo-Zu the Punisher
 Vial Smasher the Fierce
-Krenko, Tin Street Kingspin
-Gut, True Sould Zealot
+Krenko, Tin Street Kingpin
+Gut, True Soul Zealot
 Duke Ulder Ravengard
 Hanweir Garrison
 Kogla, the Titan Ape
@@ -35,7 +35,7 @@ Tamiyo's Safekeeping
 Ob Nixilis, the Hate-Twisted
 Windswift Slice
 Mirkwood Bats
-Wat of Rebirth
+Vat of Rebirth
 Guardian Project
 Vampire Nighthawk
 Increasing Ambition
@@ -59,7 +59,7 @@ Coldsteel Heart
 The Thirteenth Doctor
 Four Knocks
 Winds of Abandon
-Ghazghkull, Prophet of the Waaagh!
+Zurgo Helmsmasher
 Oketra's Monument
 Chandra, Torch of Defiance
 Young Pyromancer

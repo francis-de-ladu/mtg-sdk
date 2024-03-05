@@ -31,9 +31,9 @@ def exact(
     client: ApiClient,
     query: str,
     set: Optional[str] = None,
-    fmt: Format = Format.JSON,
-    face: Face = Face.FRONT,
-    version: Version = Version.LARGE,
+    fmt: str | Format = Format.JSON,
+    face: str | Face = Face.FRONT,
+    version: str | Version = Version.LARGE,
     pretty: bool = False,
 ) -> Card:
     return _named(

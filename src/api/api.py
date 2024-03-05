@@ -74,13 +74,18 @@ class ApiClient:
         path = raw_path.format(**path_vars)
         return os.path.join(self.base_url, path)
 
-    def get(self, endpoint: Endpoint, output: type[U], params: dict, /, **path_vars: Unpack[PathVars]) -> U:
+    def _wait_delay(self) -> None:
         delta = time.time() - self.previous_at
+
         if delta < self.min_wait_time:
-            logger.info(f"Sleeping for {round(1000 * (self.min_wait_time - delta))} mssrc..")
-            time.sleep(self.min_wait_time - delta)
+            sleep_time = self.min_wait_time - delta
+            logger.info(f"Sleeping for {round(1000 * sleep_time)} ms...")
+            time.sleep(sleep_time)
 
         self._previous_at = time.time()
+
+    def get(self, endpoint: Endpoint, output: type[U], params: dict, /, **path_vars: Unpack[PathVars]) -> U:
+        self._wait_delay()
 
         url = self._create_url(endpoint, path_vars)
         resp = requests.get(url, params)
@@ -96,5 +101,39 @@ class ApiClient:
             out_path.parent.mkdir(parents=True, exist_ok=True)
             with out_path.open("w") as fp:
                 json.dump(content, fp, indent=4)
+
+            raise e
+
+    def post(
+        self,
+        endpoint: Endpoint,
+        output: type[U],
+        params: dict,
+        payload: dict,
+        /,
+        **path_vars: Unpack[PathVars],
+    ) -> U:
+        self._wait_delay()
+
+        url = self._create_url(endpoint, path_vars)
+        print(url)
+        resp = requests.post(url, params=params, json=payload)
+        print(resp.content)
+        logger.info(f"{resp} --- {path_vars=} --- {params=}")
+
+        try:
+            content = resp.json()
+            print(len(content["not_found"]))
+            print(len(content["data"]))
+            print(content["not_found"])
+            input()
+            return output.from_dict(content)
+        except Exception as e:
+            # logger.error(f"{type(e).__name__}: {e}")
+
+            # out_path = Path("errors") / f"{datetime.now()}.json"
+            # out_path.parent.mkdir(parents=True, exist_ok=True)
+            # with out_path.open("w") as fp:
+            #     json.dump(content, fp, indent=4)
 
             raise e
