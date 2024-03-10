@@ -116,9 +116,7 @@ class ApiClient:
         self._wait_delay()
 
         url = self._create_url(endpoint, path_vars)
-        print(url)
         resp = requests.post(url, params=params, json=payload)
-        print(resp.content)
         logger.info(f"{resp} --- {path_vars=} --- {params=}")
 
         try:
@@ -126,7 +124,6 @@ class ApiClient:
             print(len(content["not_found"]))
             print(len(content["data"]))
             print(content["not_found"])
-            input()
             return output.from_dict(content)
         except Exception as e:
             # logger.error(f"{type(e).__name__}: {e}")

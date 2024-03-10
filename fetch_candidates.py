@@ -6,6 +6,7 @@ import requests
 import json
 from itertools import batched
 from src.misc import IdentName
+from pprint import pprint
 
 client = ApiClient()
 
@@ -28,19 +29,15 @@ with path.open("r") as fp:
     candidates = fp.read().splitlines()
 
 
-
-idents = [IdentName(name) for name in candidates]
-collection(client, idents[:75])
-from pprint import pprint
-for batch in batched(idents, n=75):
-    # pprint([sup.to_dict() for sup in batch])
-    col = collection(client, batch)
-    pprint(col.not_found)
+# idents = [IdentName(name) for name in candidates]
+# for batch in batched(idents, n=75):
+#     col = collection(client, batch)
+#     pprint(col.not_found)
 
 
-# card = fuzzy(client, "Ghazghkull, Prophet of the Waaagh!")
-# print(card.name)
-# print(card.set_name)
+card = fuzzy(client, "Ghazghkull, Prophet of the Waaagh!")
+print(card.name)
+print(card.set_name)
 
 # for name in candidates:
 #     card = fuzzy(client, name)

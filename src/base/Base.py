@@ -4,8 +4,10 @@ from datetime import date, datetime
 from enum import Flag
 from functools import cached_property, reduce
 from operator import or_
-from typing import Self, get_args
+from typing import Self, get_args, Type
 from uuid import UUID
+import inspect
+from functools import partial
 
 from urllib3.util import Url, parse_url
 
@@ -31,13 +33,14 @@ class Base(ABC):
             cast = self._types_to_cast.get(field_type, field_type)
 
             # TODO: add proper comment here
-            if issubclass(cast, Base):
-                cast = cast.from_dict
+            if inspect.isclass(cast):
+                if issubclass(cast, Base):
+                    cast = cast.from_dict
+                elif issubclass(cast, Flag):
+                    cast = partial(self._combine_flags, cast)
 
             # cast field value according to field type
-            if issubclass(cast, Flag):
-                new_value = reduce(or_, [getattr(cast, item) for item in field_value], 0)
-            elif iter_type is list:
+            if iter_type is list:
                 new_value = [cast(value) for value in field_value]
             elif iter_type is dict:
                 new_value = {key: cast(value) for key, value in field_value.items() if value is not None}
@@ -47,7 +50,8 @@ class Base(ABC):
             # assign new value to the field
             object.__setattr__(self, field.name, new_value)
 
-    def _extract_type(self, field_type):
+    @classmethod
+    def _extract_type(cls, field_type):
         # get field and iterator types; can be anything similar to:
         #  - <class 'int'>
         #  - list[uuid.UUID]
@@ -73,7 +77,16 @@ class Base(ABC):
             else:
                 field_type = type_args[-1]
 
+            field_type_lower = str(field_type).lower()
+
         return field_type, iter_type
+
+    @classmethod
+    def _combine_flags(cls, flag_cls: Type[Flag], values: list[str]) -> Flag:
+        combined = flag_cls(0)
+        for val in values:
+            combined |= getattr(flag_cls, val)
+        return combined
 
     @cached_property
     def _types_to_cast(self):
@@ -83,11 +96,14 @@ class Base(ABC):
             UUID: self._to_uuid,
         }
 
-    def _to_date(self, value):
+    @classmethod
+    def _to_date(cls, value: str):
         return datetime.strptime(value, "%Y-%m-%d").date()
 
-    def _to_url(self, value):
+    @classmethod
+    def _to_url(cls, value: str):
         return parse_url(value)
 
-    def _to_uuid(self, value):
+    @classmethod
+    def _to_uuid(cls, value: str):
         return UUID(value)
