@@ -18,6 +18,8 @@ black = "^24.2.0"
 isort = "^5.13.2"
 mypy = "^1.8.0"
 types-requests = "^2.31.0.20240218"
+tqdm = "^4.66.2"
+types-tqdm = "^4.66.0.20240106"
 
 [build-system]
 requires = ["poetry-core"]

@@ -24,20 +24,25 @@ client = ApiClient()
 # print(resp.json())
 
 
-path = Path("candidates.txt")
+path = Path("data/candidates.txt")
 with path.open("r") as fp:
     candidates = fp.read().splitlines()
 
 
-# idents = [IdentName(name) for name in candidates]
-# for batch in batched(idents, n=75):
-#     col = collection(client, batch)
-#     pprint(col.not_found)
+path = Path("data/commanders.txt")
+with path.open("r") as fp:
+    commanders = fp.read().splitlines()
 
 
-card = fuzzy(client, "Ghazghkull, Prophet of the Waaagh!")
-print(card.name)
-print(card.set_name)
+idents = [IdentName(name) for name in commanders]
+for batch in batched(idents, n=75):
+    col = collection(client, batch)
+    pprint(col.not_found)
+
+
+# card = fuzzy(client, "Ghazghkull, Prophet of the Waaagh!")
+# print(card.name)
+# print(card.set_name)
 
 # for name in candidates:
 #     card = fuzzy(client, name)

@@ -4,13 +4,19 @@ from pathlib import Path
 import json
 from src.cards.Card import Card
 
-
+from tqdm import tqdm
 layout_dir = Path("./tests/layout/data")
-
+import time
 
 class LayoutTestCase(unittest.TestCase):
     def test_layouts(self):
-        for file in layout_dir.iterdir():
+        files = list(layout_dir.iterdir())
+        desc_len = max(len(file.stem) for file in files)
+
+        progress = tqdm(files)
+        for file in progress:
+            progress.desc = f"{file.stem:^{desc_len}}"
+            time.sleep(0.02)
             with file.open('r') as fp:
                 resp = json.load(fp)
             
