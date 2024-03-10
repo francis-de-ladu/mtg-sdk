@@ -1,6 +1,15 @@
 from abc import ABC, abstractmethod
+from enum import Enum
 from typing import Optional, override
 from uuid import UUID
+
+
+class Kind(Enum):
+    SCRYFALL = "id"
+    MTGO = "mtgo_id"
+    MULTIVERSE = "multiverse_id"
+    ORACLE = "oracle_id"
+    ILLUSTRATION = "illustration_id"
 
 
 class Identifier(ABC):
@@ -10,9 +19,13 @@ class Identifier(ABC):
 
 
 class IdentId(Identifier):
-    def __init__(self, id: UUID | str | int, kind: str):
+    def __init__(
+        self,
+        id: UUID | str | int,
+        kind: Optional[str | Kind] = Kind.SCRYFALL,
+    ):
         self.id = str(id)
-        self.kind = kind
+        self.kind = Kind(kind).value
 
     @override
     def to_dict(self) -> dict[str, str]:
@@ -26,15 +39,10 @@ class IdentName(Identifier):
 
     @override
     def to_dict(self) -> dict[str, str]:
-        if self.set is None:
-            return {
-                "name": self.name,
-            }
-        else:
-            return {
-                "name": self.name,
-                "set": self.set,
-            }
+        output = {"name": self.name}
+        if self.set is not None:
+            output["set"] = self.set
+        return output
 
 
 class IdentNumber(Identifier):

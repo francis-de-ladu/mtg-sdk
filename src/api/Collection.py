@@ -11,4 +11,4 @@ class Collection(Base):
     # Identifiers that are not found will be returned in this array.
     not_found: list[dict[str, str]]
     # Cards found will be returned in the order that they were requested in this array.
-    data: list[Card.from_dict]  # type: ignore[valid-type]
+    data: list[Card]

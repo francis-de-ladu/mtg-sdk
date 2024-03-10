@@ -1,4 +1,4 @@
-from typing import TypeVar
+from typing import Iterable, TypeVar
 
 from src.api import ApiClient, CardsEndpoint, Collection
 from src.misc import Identifier
@@ -8,7 +8,7 @@ Ident = TypeVar("Ident", bound=Identifier)
 
 def collection(
     client: ApiClient,
-    identifiers: list[Ident],
+    identifiers: Iterable[Ident],
     *,
     pretty: bool = False,
 ) -> Collection:

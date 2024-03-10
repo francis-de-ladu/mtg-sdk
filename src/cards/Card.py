@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 from datetime import date
-from functools import cached_property
 from typing import Optional, Self, override
 from uuid import UUID
 
@@ -239,25 +238,3 @@ class Card(Base):
             data["type_line"] = data["card_faces"][0]["type_line"]
 
         return cls(**data)
-
-    @override
-    @cached_property
-    def _types_to_cast(self):
-        return {
-            date: self._to_date,
-            Color: self._to_color,
-            Url: self._to_url,
-            UUID: self._to_uuid,
-            CardFace: self._to_face,
-            Preview: self._to_preview,
-            RelatedCard: self._to_related,
-        }
-
-    def _to_face(self, value):
-        return CardFace.from_dict(value)
-
-    def _to_preview(self, value):
-        return Preview.from_dict(value)
-
-    def _to_related(self, value):
-        return RelatedCard.from_dict(value)

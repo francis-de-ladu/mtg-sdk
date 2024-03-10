@@ -110,7 +110,7 @@ Hero's Downfall
 Infernal Grasp
 Terminate
 Dreadhorde Arcanist
-Blasphemouos Act
+Blasphemous Act
 Kellan, the Fae-Blooded
 Lich-Knights' Conquest
 Twisted Sewer-Witch
@@ -146,7 +146,7 @@ Angrath, the Flame-Chained
 Berserk
 Force of Vigor
 Misleading Signpost
-Mayheim Devil
+Mayhem Devil
 Orcish Lumberjack
 Runaway Steam-Kin
 Relic of Legends
@@ -155,14 +155,14 @@ Korvold, Fae-Cursed King
 Ozolith, the Shattered Spire
 Sunshot Militia
 Kutzil, Malamet Exemplar
-Daultless Dismantler
+Dauntless Dismantler
 Pit of Offerings
 Roaming Throne
 Treasure Map
 Growing Rites of Itlimoc
 Contest of Claws
 Illustrious Wanderglyph
-Sovereigh Okinec Ahau
+Sovereign Okinec Ahau
 Ancestors' Aid
 Indoraptor' the Perfect Hybrid
 Compy Swarm
@@ -196,7 +196,7 @@ Song of Totentanz
 Unruly Catapult
 Ob Nixilis, Captive Kingpin
 Urabrask's Forge
-Lagomo,Hand of Hatred
+Lagomo, Hand of Hatred
 Brotherhood's End
 Mr. Orfeo, the Boulder
 Simic Ascendancy

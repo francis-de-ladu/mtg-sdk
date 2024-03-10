@@ -4,7 +4,7 @@ from src.api import ApiClient
 from src.api.cards import fuzzy, random, collection
 import requests
 import json
-
+from itertools import batched
 from src.misc import IdentName
 
 client = ApiClient()
@@ -25,17 +25,17 @@ client = ApiClient()
 
 path = Path("candidates.txt")
 with path.open("r") as fp:
-    candidates = fp.read().split("\n")
+    candidates = fp.read().splitlines()
 
 
-first_75 = candidates[:75]
 
-# idents = [Identifier.NAME.value.format(name=name) for name in first_75]
-idents = [IdentName(name) for name in first_75]
-# print(idents[0].format(name="lala"))
-col = collection(client, idents)
+idents = [IdentName(name) for name in candidates]
+collection(client, idents[:75])
 from pprint import pprint
-pprint(col.not_found)
+for batch in batched(idents, n=75):
+    # pprint([sup.to_dict() for sup in batch])
+    col = collection(client, batch)
+    pprint(col.not_found)
 
 
 # card = fuzzy(client, "Ghazghkull, Prophet of the Waaagh!")
