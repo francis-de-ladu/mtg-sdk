@@ -121,9 +121,9 @@ class ApiClient:
 
         try:
             content = resp.json()
-            print(len(content["not_found"]))
-            print(len(content["data"]))
-            print(content["not_found"])
+            # print(len(content["not_found"]))
+            # print(len(content["data"]))
+            # print(content["not_found"])
             return output.from_dict(content)
         except Exception as e:
             # logger.error(f"{type(e).__name__}: {e}")

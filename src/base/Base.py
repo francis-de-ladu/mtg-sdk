@@ -1,13 +1,11 @@
+import inspect
 from abc import ABC
 from dataclasses import dataclass
 from datetime import date, datetime
 from enum import Flag
-from functools import cached_property, reduce
-from operator import or_
-from typing import Self, get_args, Type
+from functools import cached_property, partial
+from typing import Self, Type, get_args
 from uuid import UUID
-import inspect
-from functools import partial
 
 from urllib3.util import Url, parse_url
 

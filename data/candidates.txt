@@ -150,14 +150,12 @@ Mayhem Devil
 Orcish Lumberjack
 Runaway Steam-Kin
 Relic of Legends
-Dockside Extortionist
 Korvold, Fae-Cursed King
 Ozolith, the Shattered Spire
 Sunshot Militia
 Kutzil, Malamet Exemplar
 Dauntless Dismantler
 Pit of Offerings
-Roaming Throne
 Treasure Map
 Growing Rites of Itlimoc
 Contest of Claws
@@ -183,7 +181,6 @@ Umezawa's Jitte
 Ashnod's Altar
 Rogue's Passage
 Fabled Passage
-Prismatic Vista
 Thought Vessel
 Mind Stone
 Glistening Sphere

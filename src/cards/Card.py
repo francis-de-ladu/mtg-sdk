@@ -238,3 +238,9 @@ class Card(Base):
             data["type_line"] = data["card_faces"][0]["type_line"]
 
         return cls(**data)
+
+    def can_command(self, other: Self) -> bool:
+        return (self.color_identity | other.color_identity) == self.color_identity
+
+    def can_be_commanded_by(self, other: Self) -> bool:
+        return (self.color_identity & other.color_identity) == self.color_identity
